@@ -8,4 +8,4 @@ run:
 CURRENT_VERSION := $(grep -m 1 '^version' Cargo.toml | awk -F ' = ' '{print $2}' | tr -d '"')
 
 version:
-	echo $(CURRENT_VERSION)
+	$(CURRENT_VERSION)
