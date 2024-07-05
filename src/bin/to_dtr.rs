@@ -9,6 +9,8 @@ fn main() {
 
     // Check if we have the correct number of arguments
     if args.len() != 2 {
+        args.iter().for_each(|arg| println!("{}", arg));
+
         eprintln!("Usage: <filepath>");
         std::process::exit(1);
     }
