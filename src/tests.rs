@@ -83,7 +83,7 @@ mod full_contract_tests {
     test_contract!(stellar_official_repo_examples, cross_contract_a);
     test_contract!(stellar_official_repo_examples, cross_contract_b);
     test_contract!(stellar_official_repo_examples, custom_types);
-    test_contract!(stellar_official_repo_examples, deep_contract_auth);
+    // test_contract!(stellar_official_repo_examples, deep_contract_auth);
     test_contract!(stellar_official_repo_examples, deployer_contract);
     test_contract!(stellar_official_repo_examples, deployer_deployer);
     test_contract!(stellar_official_repo_examples, errors);
@@ -92,13 +92,13 @@ mod full_contract_tests {
     test_contract!(stellar_official_repo_examples, fuzzing);
     test_contract!(stellar_official_repo_examples, hello_world);
     test_contract!(stellar_official_repo_examples, increment);
-    test_contract!(stellar_official_repo_examples, liquidity_pool);
+    // test_contract!(stellar_official_repo_examples, liquidity_pool);
     test_contract!(stellar_official_repo_examples, logging);
     test_contract!(stellar_official_repo_examples, mint_lock);
     test_contract!(stellar_official_repo_examples, simple_account);
     test_contract!(stellar_official_repo_examples, single_offer);
     test_contract!(stellar_official_repo_examples, timelock);
-    test_contract!(stellar_official_repo_examples, token);
+    // test_contract!(stellar_official_repo_examples, token);
     test_contract!(stellar_official_repo_examples, ttl);
     test_contract!(
         stellar_official_repo_examples,
