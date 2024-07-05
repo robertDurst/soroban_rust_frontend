@@ -10,7 +10,6 @@ on:
 jobs:
   trigger-remote-workflow:
     runs-on: ubuntu-latest
-
     steps:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
@@ -18,3 +17,35 @@ jobs:
           token: ${{ secrets.PAT }}
           repository: spaced-out-thoughts-dev-foundation/bean-stock
           event-type: trigger-workflow
+  return-bean-pod-version:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.2.2']
+    outputs:
+      output1: ${{ steps.make_version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: false
+      - name: Install dependencies
+        run: bundle install
+      - uses: actions/checkout@v2
+      - id: make_version
+        run: echo "version=$(make version)" >> "$GITHUB_OUTPUT"
+
+  output-return-bean-pod-version-badge-job:
+    runs-on: ubuntu-latest
+    needs: return-bean-pod-version
+    steps:
+      - name: Bean Pod Version Badge
+        uses: RubbaBoy/BYOB@v1.3.0
+        with:
+          name: time
+          label: 'Latest Bean Pod Version'
+          status: ${{ needs.return-bean-pod-version.outputs.output1 }}
+          color: 00EEFF
+          github_token: ${{ secrets.PAT }}
