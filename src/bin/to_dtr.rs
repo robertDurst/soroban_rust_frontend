@@ -7,16 +7,8 @@ use std::fs;
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    // Check if we have the correct number of arguments
-    if args.len() != 2 {
-        args.iter().for_each(|arg| println!("{}", arg));
-
-        eprintln!("Usage: <filepath>");
-        std::process::exit(1);
-    }
-
     // Get the input argument
-    let input = &args[1];
+    let input = &args[2];
 
     let contents = fs::read_to_string(input).expect("Something went wrong reading the file");
 
