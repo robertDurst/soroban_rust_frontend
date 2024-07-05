@@ -1,3 +1,5 @@
-# Rust to DTR
+# Soroban Rust Frontend
 
-DTR == Digicus Textural Representation
+[![Build and Test](https://github.com/spaced-out-thoughts-dev-foundation/soroban_rust_frontend/actions/workflows/build_and_test.yml/badge.svg)](https://github.com/spaced-out-thoughts-dev-foundation/soroban_rust_frontend/actions/workflows/build_and_test.yml)
+
+[![Bean Stock Updated](https://github.com/spaced-out-thoughts-dev-foundation/soroban_rust_frontend/actions/workflows/bean_stock_remote_submodule_update.yml/badge.svg)](https://github.com/spaced-out-thoughts-dev-foundation/soroban_rust_frontend/actions/workflows/bean_stock_remote_submodule_update.yml)
