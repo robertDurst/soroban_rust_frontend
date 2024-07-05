@@ -5,6 +5,7 @@ run:
   fi; \
 	./to_dtr $(file)
 
+CURRENT_VERSION := $(grep -m 1 '^version' Cargo.toml | awk -F ' = ' '{print $2}' | tr -d '"')
+
 version:
-	result=$(grep -m 1 '^version' Cargo.toml | awk -F ' = ' '{print $2}' | tr -d '"') \
-	echo $result
+	echo $(CURRENT_VERSION)
