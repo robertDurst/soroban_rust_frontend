@@ -4,3 +4,10 @@ run:
   		exit 1; \
   fi; \
 	./to_dtr $(file)
+
+version_cmd := grep -m 1 '^version' Cargo.toml | awk -F ' = ' '{print $$2}' | tr -d '"'
+
+.PHONY: version
+
+version:
+	@$(version_cmd)
