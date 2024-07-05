@@ -25,14 +25,6 @@ jobs:
     outputs:
       output1: ${{ steps.make_version.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby-version }}
-          bundler-cache: false
-      - name: Install dependencies
-        run: bundle install
       - uses: actions/checkout@v2
       - id: make_version
         run: echo "version=$(make version)" >> "$GITHUB_OUTPUT"
