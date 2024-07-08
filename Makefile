@@ -11,3 +11,6 @@ version_cmd := grep -m 1 '^version' Cargo.toml | awk -F ' = ' '{print $$2}' | tr
 
 version:
 	@$(version_cmd)
+
+setup:
+	@echo "no setup needed"

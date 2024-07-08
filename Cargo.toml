@@ -19,3 +19,4 @@ paste = "1.0"
 
 [lib]
 name = "rust_to_dtr"
+crate-type = ["cdylib", "lib"]
