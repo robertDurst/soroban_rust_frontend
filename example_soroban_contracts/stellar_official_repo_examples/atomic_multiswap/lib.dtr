@@ -33,7 +33,8 @@
 			{ id: 104, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_66.is_ok), assign: CONDITIONAL_JUMP_ASSIGNMENT_65, scope: 63 }
 			{ id: 106, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_65, 105), scope: 63 }
 			{ id: 111, instruction: evaluate, input: (swaps_b.remove, i), scope: 105 }
-			{ id: 112, instruction: jump, input: (0), scope: 105 }
+			{ id: 112, instruction: break, input: (), scope: 105 }
+			{ id: 113, instruction: jump, input: (63), scope: 105 }
 			{ id: 114, instruction: jump, input: (28), scope: 63 }
 			{ id: 115, instruction: increment, input: (i), scope: 28 }
 			{ id: 116, instruction: goto, input: (27), scope: 28 }

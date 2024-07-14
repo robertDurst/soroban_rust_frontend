@@ -12,7 +12,8 @@
 			{ id: 16, instruction: evaluate, input: (equal_to, i, 5), assign: CONDITIONAL_JUMP_ASSIGNMENT_11, scope: 9 }
 			{ id: 18, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_11, 17), scope: 9 }
 			{ id: 19, instruction: print, input: ("We got a five!"), scope: 17 }
-			{ id: 20, instruction: jump, input: (0), scope: 17 }
+			{ id: 20, instruction: break, input: (), scope: 17 }
+			{ id: 21, instruction: jump, input: (9), scope: 17 }
 			{ id: 22, instruction: print, input: ("i: {}", i), scope: 9 }
 			{ id: 23, instruction: increment, input: (i), scope: 9 }
 			{ id: 24, instruction: goto, input: (8), scope: 9 }
