@@ -17,17 +17,6 @@ pub fn handle_break_expression(
         compilation_state.scope(),
     ));
 
-    let prev_scope = compilation_state.scope();
-    compilation_state.exit_scope();
-
-    instructions_to_return.push(Instruction::new(
-        compilation_state.get_global_uuid(),
-        "jump".to_string(),
-        vec![compilation_state.scope().to_string()],
-        "".to_string(),
-        prev_scope,
-    ));
-
     Ok(instructions_to_return)
 }
 #[cfg(test)]
@@ -45,22 +34,13 @@ mod tests {
         let instructions = handle_break_expression(&expr, &mut compilation_state).unwrap();
         assert_eq!(
             instructions,
-            vec![
-                Instruction::new(
-                    1,
-                    "break".to_string(),
-                    vec![],
-                    "".to_string(),
-                    compilation_state.scope(),
-                ),
-                Instruction::new(
-                    2,
-                    "jump".to_string(),
-                    vec![compilation_state.scope().to_string()],
-                    "".to_string(),
-                    0,
-                ),
-            ]
+            vec![Instruction::new(
+                1,
+                "break".to_string(),
+                vec![],
+                "".to_string(),
+                compilation_state.scope(),
+            ),]
         );
     }
 }

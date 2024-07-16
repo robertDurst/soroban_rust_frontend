@@ -44,12 +44,8 @@ pub fn parse_block_stmt(
 
                         return_instructions.push(Instruction::new(
                             compilation_state.get_global_uuid(),
-                            "evaluate".to_string(),
-                            vec![
-                                "try_assign".to_string(),
-                                pattern_as_string.clone(),
-                                try_assign_result.clone(),
-                            ],
+                            "try_assign".to_string(),
+                            vec![pattern_as_string.clone(), try_assign_result.clone()],
                             try_assign_result_conditional.clone(),
                             compilation_state.scope(),
                         ));

@@ -1,0 +1,15 @@
+[Helpers]:
+-() [simple_panic]
+	* Inputs:
+	{
+	}
+	* Instructions:
+		$
+			{ id: 3, instruction: jump, input: (true, 2), scope: 0 }
+			{ id: 7, instruction: jump, input: (true, 6), scope: 2 }
+			{ id: 8, instruction: exit_with_message, input: ("This is a panic message"), scope: 6 }
+			{ id: 10, instruction: print, input: ("This is not a panic message"), scope: 2 }
+			{ id: 11, instruction: jump, input: (0), scope: 2 }
+		$
+
+:[Helpers]

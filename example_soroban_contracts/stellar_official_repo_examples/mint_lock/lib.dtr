@@ -112,7 +112,7 @@
 			{ id: 192, instruction: evaluate, input: (minter.clone), assign: CALL_EXPRESSION_ARG_2_189, scope: 180 }
 			{ id: 195, instruction: evaluate, input: (StorageKey::Minter, CALL_EXPRESSION_ARG_1_185, CALL_EXPRESSION_ARG_2_189), assign: METHOD_CALL_ARG_1_184, scope: 180 }
 			{ id: 202, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_196.get, METHOD_CALL_ARG_1_184), assign: TRY_ASSIGN_RESULT_182, scope: 180 }
-			{ id: 203, instruction: evaluate, input: (try_assign, Some(config), TRY_ASSIGN_RESULT_182), assign: TRY_ASSIGN_RESULT_CONDITIONAL_183, scope: 180 }
+			{ id: 203, instruction: try_assign, input: (Some(config), TRY_ASSIGN_RESULT_182), assign: TRY_ASSIGN_RESULT_CONDITIONAL_183, scope: 180 }
 			{ id: 205, instruction: jump, input: (TRY_ASSIGN_RESULT_CONDITIONAL_183, 204), scope: 180 }
 			{ id: 207, instruction: jump, input: (206), scope: 180 }
 			{ id: 208, instruction: jump, input: (180), scope: 204 }

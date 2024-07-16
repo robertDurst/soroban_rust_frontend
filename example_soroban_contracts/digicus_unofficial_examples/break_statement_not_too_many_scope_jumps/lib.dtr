@@ -14,10 +14,11 @@
 			{ id: 19, instruction: print, input: ("We got a five!"), scope: 17 }
 			{ id: 20, instruction: break, input: (), scope: 17 }
 			{ id: 21, instruction: jump, input: (9), scope: 17 }
-			{ id: 23, instruction: print, input: ("i: {}", i), scope: 9 }
-			{ id: 24, instruction: increment, input: (i), scope: 9 }
-			{ id: 25, instruction: goto, input: (8), scope: 9 }
-			{ id: 26, instruction: print, input: ("Done!"), scope: 0 }
+			{ id: 22, instruction: print, input: ("i: {}", i), scope: 9 }
+			{ id: 23, instruction: increment, input: (i), scope: 9 }
+			{ id: 24, instruction: goto, input: (8), scope: 9 }
+			{ id: 25, instruction: print, input: ("Done!"), scope: 0 }
 		$
 
 :[Helpers]
+
