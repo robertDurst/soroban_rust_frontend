@@ -16,8 +16,6 @@ pub fn handle_call_expression(
     let mut expressions: Vec<Instruction> = Vec::new();
     let original_assignment = compilation_state.next_assignment.clone();
 
-    println!("\n[DEBUG] Inside handle_call_expression");
-
     expr.args.iter().for_each(|arg| {
         let arg_name = format!(
             "CALL_EXPRESSION_ARG_{}_{}",
@@ -32,15 +30,6 @@ pub fn handle_call_expression(
             Ok(expressions) => expressions,
             Err(_) => panic!("Error parsing call expression"),
         };
-
-        println!("\n[DEBUG] expression_stack for : {:?}", arg_name);
-        compilation_state
-            .clone()
-            .expression_stack
-            .into_iter()
-            .for_each(|x| {
-                println!("[DEBUG] expression_stack: {:?}", x);
-            });
 
         expressions.extend(expressions_parsed);
 
@@ -64,10 +53,6 @@ pub fn handle_call_expression(
         0,
         format!("CALL_EXPRESSION_FUNCTION_{}", unique_uuid).to_string(),
     );
-
-    argument_names.clone().into_iter().for_each(|arg| {
-        println!("[DEBUG] Argument: {}", arg);
-    });
 
     func.extend(expressions);
     func.push(Instruction::new(

@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use crate::{common::compilation_state::CompilationState, Instruction};
 
 mod and_assign_elimination;
@@ -13,34 +15,46 @@ pub fn apply(
 
     let mut last_was_reference = false;
     let mut last_reference_instruction: Option<Instruction> = None;
-    instructions.clone().into_iter().for_each(|instruction| {
-        println!("Reference instruction: {:?}", instruction);
+    let mut id_map: HashMap<u128, bool> = HashMap::new();
+    instructions
+        .clone()
+        .into_iter()
+        .for_each(|mut instruction| {
+            if id_map.contains_key(&instruction.id) {
+                instruction.id = compilation_state.get_global_uuid();
 
-        if instruction.name == "reference" {
-            if let Some(lri) = last_reference_instruction.clone() {
-                let mut lri_to_push = lri.clone();
-                lri_to_push.input.insert(0, format!("&"));
-                lri_to_push.assign = instruction.assign.clone();
-
-                phase_0_optimized.push(lri_to_push);
-            } else {
-                panic!(
-                    "Reference instruction should be preceded by a reference assign instruction"
-                );
+                while id_map.contains_key(&instruction.id) {
+                    instruction.id = compilation_state.get_global_uuid();
+                }
             }
 
-            last_was_reference = false;
-            last_reference_instruction = None;
-        } else if instruction.assign.starts_with("REFERENCE_EXPRESSION_") {
-            last_was_reference = true;
-            last_reference_instruction = Some(instruction);
-        } else {
-            last_was_reference = false;
-            last_reference_instruction = None;
+            id_map.insert(instruction.id, true);
 
-            phase_0_optimized.push(instruction);
-        }
-    });
+            if instruction.name == "reference" {
+                if let Some(lri) = last_reference_instruction.clone() {
+                    let mut lri_to_push = lri.clone();
+                    lri_to_push.input.insert(0, format!("&"));
+                    lri_to_push.assign = instruction.assign.clone();
+
+                    phase_0_optimized.push(lri_to_push);
+                } else {
+                    panic!(
+                    "Reference instruction should be preceded by a reference assign instruction"
+                );
+                }
+
+                last_was_reference = false;
+                last_reference_instruction = None;
+            } else if instruction.assign.starts_with("REFERENCE_EXPRESSION_") {
+                last_was_reference = true;
+                last_reference_instruction = Some(instruction);
+            } else {
+                last_was_reference = false;
+                last_reference_instruction = None;
+
+                phase_0_optimized.push(instruction);
+            }
+        });
 
     let phase_1_optimized =
         constant_propagation::apply(phase_0_optimized, compilation_state.scope_tree_root.clone());

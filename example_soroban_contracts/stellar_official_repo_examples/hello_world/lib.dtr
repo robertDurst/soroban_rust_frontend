@@ -11,6 +11,6 @@
 	* Instructions:
 		$
 			{ id: 0, instruction: instantiate_object, input: (List, &env, "Hello", to), assign: Thing_to_return, scope: 0 }
-			{ id: 0, instruction: return, input: (Thing_to_return), scope: 0 }
+			{ id: 1, instruction: return, input: (Thing_to_return), scope: 0 }
 		$
 :[Interface]

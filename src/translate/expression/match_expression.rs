@@ -33,14 +33,6 @@ pub fn handle_match_expression(
             compilation_state.get_global_uuid()
         );
 
-        compilation_state
-            .clone()
-            .expression_stack
-            .into_iter()
-            .for_each(|instruction| {
-                println!("{:?}", instruction);
-            });
-
         all_conditions.push(Instruction::new(
             compilation_state.get_global_uuid(),
             format!("evaluate"),

@@ -48,15 +48,6 @@ pub fn handle_macro(
         "".to_string()
     };
 
-    println!("instruction_operation: {:?}", instruction_operation);
-    compilation_state
-        .clone()
-        .expression_stack
-        .into_iter()
-        .for_each(|x| {
-            println!("expression_stack: {:?}", x);
-        });
-
     Ok(vec![Instruction::new(
         // TODO: fix this hardcoding
         compilation_state.get_global_uuid(),
