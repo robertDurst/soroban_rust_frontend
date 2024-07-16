@@ -76,6 +76,7 @@ mod full_contract_tests {
     test_contract!(digicus_unofficial_examples, match_on_numbers);
     test_contract!(digicus_unofficial_examples, binary_ops_test);
     test_contract!(digicus_unofficial_examples, simple_panic);
+    test_contract!(digicus_unofficial_examples, simplest_ref_input);
     // Stellar Official Repo Examples
     test_contract!(stellar_official_repo_examples, account);
     test_contract!(stellar_official_repo_examples, alloc);

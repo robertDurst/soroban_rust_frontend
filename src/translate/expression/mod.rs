@@ -78,7 +78,7 @@ pub fn parse_expression(
             path_expression::handle_path_expression(&path, compilation_state)
         }
         syn::Expr::Reference(reference_expr) => {
-            compilation_state.expression_stack.push("Expr".to_string());
+            compilation_state.expression_stack.push("Ref".to_string());
             reference_expression::handle_reference_expression(reference_expr, compilation_state)
         }
         syn::Expr::Return(return_expr_expr) => {

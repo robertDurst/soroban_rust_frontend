@@ -8,15 +8,15 @@
 	}
 	* Instructions:
 		$
-			{ id: 8, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_5, scope: 0 }
-			{ id: 9, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_5.persistent), assign: METHOD_CALL_EXPRESSION_4, scope: 0 }
-			{ id: 10, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_4.set, DataKey::MyKey, 0), scope: 0 }
-			{ id: 19, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_16, scope: 0 }
-			{ id: 20, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_16.instance), assign: METHOD_CALL_EXPRESSION_15, scope: 0 }
-			{ id: 21, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_15.set, DataKey::MyKey, 1), scope: 0 }
-			{ id: 30, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_27, scope: 0 }
-			{ id: 31, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_27.temporary), assign: METHOD_CALL_EXPRESSION_26, scope: 0 }
-			{ id: 32, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_26.set, DataKey::MyKey, 2), scope: 0 }
+			{ id: 12, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_9, scope: 0 }
+			{ id: 13, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_9.persistent), assign: METHOD_CALL_EXPRESSION_8, scope: 0 }
+			{ id: 14, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_8.set, &, DataKey::MyKey, &, 0), scope: 0 }
+			{ id: 27, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_24, scope: 0 }
+			{ id: 28, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_24.instance), assign: METHOD_CALL_EXPRESSION_23, scope: 0 }
+			{ id: 29, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_23.set, &, DataKey::MyKey, &, 1), scope: 0 }
+			{ id: 42, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_39, scope: 0 }
+			{ id: 43, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_39.temporary), assign: METHOD_CALL_EXPRESSION_38, scope: 0 }
+			{ id: 44, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_38.set, &, DataKey::MyKey, &, 2), scope: 0 }
 		$
 -() [extend_persistent]
 	* Inputs:
@@ -25,9 +25,9 @@
 	}
 	* Instructions:
 		$
-			{ id: 43, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_40, scope: 0 }
-			{ id: 44, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_40.persistent), assign: METHOD_CALL_EXPRESSION_39, scope: 0 }
-			{ id: 45, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_39.extend_ttl, DataKey::MyKey, 1000, 5000), scope: 0 }
+			{ id: 57, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_54, scope: 0 }
+			{ id: 58, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_54.persistent), assign: METHOD_CALL_EXPRESSION_53, scope: 0 }
+			{ id: 59, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_53.extend_ttl, &, DataKey::MyKey, 1000, 5000), scope: 0 }
 		$
 -() [extend_instance]
 	* Inputs:
@@ -36,9 +36,9 @@
 	}
 	* Instructions:
 		$
-			{ id: 54, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_51, scope: 0 }
-			{ id: 55, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_51.instance), assign: METHOD_CALL_EXPRESSION_50, scope: 0 }
-			{ id: 56, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_50.extend_ttl, 2000, 10000), scope: 0 }
+			{ id: 68, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_65, scope: 0 }
+			{ id: 69, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_65.instance), assign: METHOD_CALL_EXPRESSION_64, scope: 0 }
+			{ id: 70, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_64.extend_ttl, 2000, 10000), scope: 0 }
 		$
 -() [extend_temporary]
 	* Inputs:
@@ -47,9 +47,9 @@
 	}
 	* Instructions:
 		$
-			{ id: 67, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_64, scope: 0 }
-			{ id: 68, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_64.temporary), assign: METHOD_CALL_EXPRESSION_63, scope: 0 }
-			{ id: 69, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_63.extend_ttl, DataKey::MyKey, 3000, 7000), scope: 0 }
+			{ id: 83, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_80, scope: 0 }
+			{ id: 84, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_80.temporary), assign: METHOD_CALL_EXPRESSION_79, scope: 0 }
+			{ id: 85, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_79.extend_ttl, &, DataKey::MyKey, 3000, 7000), scope: 0 }
 		$
 :[Interface]
 

@@ -48,6 +48,15 @@ pub fn handle_macro(
         "".to_string()
     };
 
+    println!("instruction_operation: {:?}", instruction_operation);
+    compilation_state
+        .clone()
+        .expression_stack
+        .into_iter()
+        .for_each(|x| {
+            println!("expression_stack: {:?}", x);
+        });
+
     Ok(vec![Instruction::new(
         // TODO: fix this hardcoding
         compilation_state.get_global_uuid(),
@@ -81,6 +90,8 @@ fn macro_tokens_to_inputs(tokens: proc_macro2::TokenStream) -> Vec<String> {
                 if token.clone().to_string() == "!" {
                     last_token_was_exclamation_point = true;
                     continue;
+                } else if token.clone().to_string() == "&" {
+                    inputs.push("&".to_string());
                 }
             }
 
@@ -105,5 +116,24 @@ fn macro_tokens_to_inputs(tokens: proc_macro2::TokenStream) -> Vec<String> {
         last_token_was_exclamation_point = false;
     }
 
-    inputs.into_iter().filter(|x| x != "" && x != " ").collect()
+    let mut ref_d_inputs: Vec<String> = vec![];
+    let mut cur_input = "";
+
+    inputs.into_iter().for_each(|x| {
+        if x == "&" {
+            cur_input = "&";
+        } else {
+            if cur_input == "&" {
+                ref_d_inputs.push(format!("&{}", x));
+            } else {
+                ref_d_inputs.push(x);
+            }
+            cur_input = "";
+        }
+    });
+
+    ref_d_inputs
+        .into_iter()
+        .filter(|x| x != "" && x != " ")
+        .collect()
 }

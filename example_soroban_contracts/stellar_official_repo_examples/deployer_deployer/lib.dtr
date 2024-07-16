@@ -22,9 +22,8 @@
 			{ id: 25, instruction: evaluate, input: (env.deployer), assign: METHOD_CALL_EXPRESSION_22, scope: 0 }
 			{ id: 26, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_22.with_address, deployer, salt), assign: METHOD_CALL_EXPRESSION_17, scope: 0 }
 			{ id: 27, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_17.deploy, wasm_hash), assign: deployed_address, scope: 0 }
-			{ id: 36, instruction: evaluate, input: (env.invoke_contract, deployed_address, init_fn, init_args), assign: res|||Val, scope: 0 }
-			{ id: 39, instruction: instantiate_object, input: (Tuple, deployed_address, res), assign: Thing_to_return, scope: 0 }
+			{ id: 40, instruction: evaluate, input: (env.invoke_contract, &, deployed_address, &, init_fn, init_args), assign: res|||Val, scope: 0 }
+			{ id: 43, instruction: instantiate_object, input: (Tuple, deployed_address, res), assign: Thing_to_return, scope: 0 }
 			{ id: 0, instruction: return, input: (Thing_to_return), scope: 0 }
 		$
 :[Interface]
-

@@ -12,8 +12,8 @@
 			{ id: 6, instruction: evaluate, input: (equal_to, possibly_the_answer_to_life, ANSWER_TO_LIFE), assign: UNARY_ARGUMENT_1, scope: 0 }
 			{ id: 7, instruction: evaluate, input: (!, UNARY_ARGUMENT_1), assign: CONDITIONAL_JUMP_ASSIGNMENT_0, scope: 0 }
 			{ id: 9, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_0, 8), scope: 0 }
-			{ id: 16, instruction: evaluate, input: (log_to_env, env, "Yes, the answer to life is 42!"), scope: 8 }
-			{ id: 17, instruction: jump, input: (0), scope: 8 }
+			{ id: 18, instruction: evaluate, input: (log_to_env, &, env, "Yes, the answer to life is 42!"), scope: 8 }
+			{ id: 19, instruction: jump, input: (0), scope: 8 }
 		$
 :[Interface]
 [State]:
@@ -32,7 +32,7 @@
 	}
 	* Instructions:
 		$
-			{ id: 0, instruction: print, input: (env, message), scope: 0 }
+			{ id: 0, instruction: print, input: (&env, &message), scope: 0 }
 		$
 
 :[Helpers]

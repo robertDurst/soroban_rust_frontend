@@ -1,0 +1,15 @@
+[Helpers]:
+-() [foo]
+	* Inputs:
+	{
+		env: Env
+	}
+	* Instructions:
+		$
+			{ id: 9, instruction: evaluate, input: (&, env.current_contract_address), assign: CALL_EXPRESSION_ARG_2_4, scope: 0 }
+			{ id: 14, instruction: instantiate_object, input: (&, UDT, ClaimableBalance, claimants), assign: CALL_EXPRESSION_ARG_3_10, scope: 0 }
+			{ id: 18, instruction: evaluate, input: (foobarit, &, env, CALL_EXPRESSION_ARG_2_4, CALL_EXPRESSION_ARG_3_10), scope: 0 }
+			{ id: 19, instruction: print, input: (&env), scope: 0 }
+		$
+
+:[Helpers]

@@ -9,6 +9,6 @@
 	}
 	* Instructions:
 		$
-			{ id: 0, instruction: print, input: (env, "Hello {}", value), scope: 0 }
+			{ id: 0, instruction: print, input: (&env, "Hello {}", value), scope: 0 }
 		$
 :[Interface]

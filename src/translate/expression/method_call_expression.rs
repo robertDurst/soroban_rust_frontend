@@ -42,6 +42,7 @@ pub fn handle_method_call_expression(
             format!("METHOD_CALL_EXPRESSION_{}", unique_uuid).to_string(),
         )),
     )?;
+
     compilation_state.with_assignment(original_assignment);
 
     receiver.extend(expressions);

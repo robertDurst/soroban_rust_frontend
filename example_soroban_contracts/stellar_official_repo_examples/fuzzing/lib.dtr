@@ -20,21 +20,21 @@
 			{ id: 15, instruction: evaluate, input: (greater_than, BINARY_EXPRESSION_LEFT_9, 10), assign: CONDITIONAL_JUMP_ASSIGNMENT_8, scope: 0 }
 			{ id: 17, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_8, 16), scope: 0 }
 			{ id: 18, instruction: exit_with_message, input: ("too many claimants"), scope: 16 }
-			{ id: 25, instruction: evaluate, input: (is_initialized, env), assign: CONDITIONAL_JUMP_ASSIGNMENT_20, scope: 0 }
-			{ id: 27, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_20, 26), scope: 0 }
-			{ id: 28, instruction: exit_with_message, input: ("contract has been already initialized"), scope: 26 }
-			{ id: 32, instruction: evaluate, input: (from.require_auth), scope: 0 }
-			{ id: 48, instruction: evaluate, input: (token::Client::new, env, token), assign: METHOD_CALL_EXPRESSION_41, scope: 0 }
-			{ id: 38, instruction: evaluate, input: (env.current_contract_address), assign: METHOD_CALL_ARG_2_35, scope: 0 }
-			{ id: 49, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_41.transfer, from, METHOD_CALL_ARG_2_35, amount), scope: 0 }
-			{ id: 63, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_60, scope: 0 }
-			{ id: 64, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_60.persistent), assign: METHOD_CALL_EXPRESSION_59, scope: 0 }
-			{ id: 57, instruction: instantiate_object, input: (UDT, ClaimableBalance, token, amount, time_bound, claimants), assign: METHOD_CALL_ARG_2_52, scope: 0 }
-			{ id: 65, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_59.set, DataKey::Balance, METHOD_CALL_ARG_2_52), scope: 0 }
-			{ id: 75, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_72, scope: 0 }
-			{ id: 76, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_72.persistent), assign: METHOD_CALL_EXPRESSION_71, scope: 0 }
-			{ id: 69, instruction: instantiate_object, input: (Tuple), assign: METHOD_CALL_ARG_2_68, scope: 0 }
-			{ id: 77, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_71.set, DataKey::Init, METHOD_CALL_ARG_2_68), scope: 0 }
+			{ id: 27, instruction: evaluate, input: (is_initialized, &, env), assign: CONDITIONAL_JUMP_ASSIGNMENT_20, scope: 0 }
+			{ id: 29, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_20, 28), scope: 0 }
+			{ id: 30, instruction: exit_with_message, input: ("contract has been already initialized"), scope: 28 }
+			{ id: 34, instruction: evaluate, input: (from.require_auth), scope: 0 }
+			{ id: 60, instruction: evaluate, input: (token::Client::new, &, env, &, token), assign: METHOD_CALL_EXPRESSION_49, scope: 0 }
+			{ id: 44, instruction: evaluate, input: (&, env.current_contract_address), assign: METHOD_CALL_ARG_2_39, scope: 0 }
+			{ id: 61, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_49.transfer, &, from, METHOD_CALL_ARG_2_39, &, amount), scope: 0 }
+			{ id: 79, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_76, scope: 0 }
+			{ id: 80, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_76.persistent), assign: METHOD_CALL_EXPRESSION_75, scope: 0 }
+			{ id: 73, instruction: instantiate_object, input: (&, UDT, ClaimableBalance, token, amount, time_bound, claimants), assign: METHOD_CALL_ARG_2_66, scope: 0 }
+			{ id: 81, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_75.set, &, DataKey::Balance, METHOD_CALL_ARG_2_66), scope: 0 }
+			{ id: 95, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_92, scope: 0 }
+			{ id: 96, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_92.persistent), assign: METHOD_CALL_EXPRESSION_91, scope: 0 }
+			{ id: 89, instruction: instantiate_object, input: (&, Tuple), assign: METHOD_CALL_ARG_2_86, scope: 0 }
+			{ id: 97, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_91.set, &, DataKey::Init, METHOD_CALL_ARG_2_86), scope: 0 }
 		$
 -() [claim]
 	* Inputs:
@@ -45,38 +45,38 @@
 	}
 	* Instructions:
 		$
-			{ id: 80, instruction: evaluate, input: (claimant.require_auth), scope: 0 }
-			{ id: 88, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_85, scope: 0 }
-			{ id: 89, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_85.persistent), assign: METHOD_CALL_EXPRESSION_84, scope: 0 }
-			{ id: 90, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_84.get, DataKey::Balance), assign: METHOD_CALL_EXPRESSION_81, scope: 0 }
-			{ id: 91, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_81.unwrap), assign: claimable_balance|||ClaimableBalance, scope: 0 }
-			{ id: 103, instruction: evaluate, input: (check_time_bound, env, claimable_balance.time_bound), assign: UNARY_ARGUMENT_93, scope: 0 }
-			{ id: 104, instruction: evaluate, input: (!, UNARY_ARGUMENT_93), assign: CONDITIONAL_JUMP_ASSIGNMENT_92, scope: 0 }
-			{ id: 106, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_92, 105), scope: 0 }
-			{ id: 107, instruction: exit_with_message, input: ("time predicate is not fulfilled"), scope: 105 }
-			{ id: 119, instruction: evaluate, input: (claimants.contains, claimant), assign: UNARY_ARGUMENT_114, scope: 0 }
-			{ id: 120, instruction: evaluate, input: (!, UNARY_ARGUMENT_114), assign: CONDITIONAL_JUMP_ASSIGNMENT_113, scope: 0 }
-			{ id: 122, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_113, 121), scope: 0 }
-			{ id: 123, instruction: exit_with_message, input: ("claimant is not allowed to claim this balance"), scope: 121 }
-			{ id: 133, instruction: evaluate, input: (greater_than, amount, claimable_balance.amount), assign: CONDITIONAL_JUMP_ASSIGNMENT_125, scope: 0 }
-			{ id: 135, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_125, 134), scope: 0 }
-			{ id: 136, instruction: exit_with_message, input: ("claimed amount greater than balance"), scope: 134 }
-			{ id: 156, instruction: evaluate, input: (token::Client::new, env, claimable_balance.token), assign: METHOD_CALL_EXPRESSION_146, scope: 0 }
-			{ id: 141, instruction: evaluate, input: (env.current_contract_address), assign: METHOD_CALL_ARG_1_138, scope: 0 }
-			{ id: 157, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_146.transfer, METHOD_CALL_ARG_1_138, claimant, amount), scope: 0 }
-			{ id: 165, instruction: subtract, input: (claimable_balance.amount, amount), assign: new_balance, scope: 0 }
-			{ id: 171, instruction: evaluate, input: (greater_than, new_balance, 0), assign: CONDITIONAL_JUMP_ASSIGNMENT_166, scope: 0 }
-			{ id: 173, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_166, 172), scope: 0 }
-			{ id: 195, instruction: jump, input: (194), scope: 0 }
-			{ id: 181, instruction: assign, input: (new_balance), assign: claimable_balance.amount, scope: 172 }
-			{ id: 190, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_187, scope: 172 }
-			{ id: 191, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_187.persistent), assign: METHOD_CALL_EXPRESSION_186, scope: 172 }
-			{ id: 192, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_186.set, DataKey::Balance, claimable_balance), scope: 172 }
-			{ id: 193, instruction: jump, input: (0), scope: 172 }
-			{ id: 202, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_199, scope: 194 }
-			{ id: 203, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_199.persistent), assign: METHOD_CALL_EXPRESSION_198, scope: 194 }
-			{ id: 204, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_198.remove, DataKey::Balance), scope: 194 }
-			{ id: 205, instruction: jump, input: (0), scope: 194 }
+			{ id: 100, instruction: evaluate, input: (claimant.require_auth), scope: 0 }
+			{ id: 110, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_107, scope: 0 }
+			{ id: 111, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_107.persistent), assign: METHOD_CALL_EXPRESSION_106, scope: 0 }
+			{ id: 112, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_106.get, &, DataKey::Balance), assign: METHOD_CALL_EXPRESSION_101, scope: 0 }
+			{ id: 113, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_101.unwrap), assign: claimable_balance|||ClaimableBalance, scope: 0 }
+			{ id: 129, instruction: evaluate, input: (check_time_bound, &, env, &claimable_balance.time_bound), assign: UNARY_ARGUMENT_115, scope: 0 }
+			{ id: 130, instruction: evaluate, input: (!, UNARY_ARGUMENT_115), assign: CONDITIONAL_JUMP_ASSIGNMENT_114, scope: 0 }
+			{ id: 132, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_114, 131), scope: 0 }
+			{ id: 133, instruction: exit_with_message, input: ("time predicate is not fulfilled"), scope: 131 }
+			{ id: 149, instruction: evaluate, input: (claimants.contains, &, claimant), assign: UNARY_ARGUMENT_142, scope: 0 }
+			{ id: 150, instruction: evaluate, input: (!, UNARY_ARGUMENT_142), assign: CONDITIONAL_JUMP_ASSIGNMENT_141, scope: 0 }
+			{ id: 152, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_141, 151), scope: 0 }
+			{ id: 153, instruction: exit_with_message, input: ("claimant is not allowed to claim this balance"), scope: 151 }
+			{ id: 163, instruction: evaluate, input: (greater_than, amount, claimable_balance.amount), assign: CONDITIONAL_JUMP_ASSIGNMENT_155, scope: 0 }
+			{ id: 165, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_155, 164), scope: 0 }
+			{ id: 166, instruction: exit_with_message, input: ("claimed amount greater than balance"), scope: 164 }
+			{ id: 196, instruction: evaluate, input: (token::Client::new, &, env, &claimable_balance.token), assign: METHOD_CALL_EXPRESSION_182, scope: 0 }
+			{ id: 173, instruction: evaluate, input: (&, env.current_contract_address), assign: METHOD_CALL_ARG_1_168, scope: 0 }
+			{ id: 197, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_182.transfer, METHOD_CALL_ARG_1_168, &, claimant, &, amount), scope: 0 }
+			{ id: 205, instruction: subtract, input: (claimable_balance.amount, amount), assign: new_balance, scope: 0 }
+			{ id: 211, instruction: evaluate, input: (greater_than, new_balance, 0), assign: CONDITIONAL_JUMP_ASSIGNMENT_206, scope: 0 }
+			{ id: 213, instruction: jump, input: (CONDITIONAL_JUMP_ASSIGNMENT_206, 212), scope: 0 }
+			{ id: 239, instruction: jump, input: (238), scope: 0 }
+			{ id: 221, instruction: assign, input: (new_balance), assign: claimable_balance.amount, scope: 212 }
+			{ id: 234, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_231, scope: 212 }
+			{ id: 235, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_231.persistent), assign: METHOD_CALL_EXPRESSION_230, scope: 212 }
+			{ id: 236, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_230.set, &, DataKey::Balance, &, claimable_balance), scope: 212 }
+			{ id: 237, instruction: jump, input: (0), scope: 212 }
+			{ id: 248, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_245, scope: 238 }
+			{ id: 249, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_245.persistent), assign: METHOD_CALL_EXPRESSION_244, scope: 238 }
+			{ id: 250, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_244.remove, &, DataKey::Balance), scope: 238 }
+			{ id: 251, instruction: jump, input: (0), scope: 238 }
 		$
 :[Interface]
 
@@ -140,9 +140,9 @@
 	* Output: Boolean
 	* Instructions:
 		$
-			{ id: 6, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_3, scope: 0 }
-			{ id: 7, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_3.persistent), assign: METHOD_CALL_EXPRESSION_2, scope: 0 }
-			{ id: 8, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_2.has, DataKey::Init), assign: Thing_to_return, scope: 0 }
+			{ id: 8, instruction: evaluate, input: (env.storage), assign: METHOD_CALL_EXPRESSION_5, scope: 0 }
+			{ id: 9, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_5.persistent), assign: METHOD_CALL_EXPRESSION_4, scope: 0 }
+			{ id: 10, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_4.has, &, DataKey::Init), assign: Thing_to_return, scope: 0 }
 			{ id: 0, instruction: return, input: (Thing_to_return), scope: 0 }
 		$
 
