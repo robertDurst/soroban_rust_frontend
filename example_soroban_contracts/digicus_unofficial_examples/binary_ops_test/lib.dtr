@@ -1,0 +1,15 @@
+[Helpers]:
+-() [binary_ops_test]
+	* Inputs:
+	{
+	}
+	* Instructions:
+		$
+			{ id: 0, instruction: assign, input: (10), assign: x, scope: 0 }
+			{ id: 5, instruction: add, input: (x, 2), assign: x, scope: 0 }
+			{ id: 10, instruction: subtract, input: (x, 3), assign: x, scope: 0 }
+			{ id: 15, instruction: multiply, input: (x, 4), assign: x, scope: 0 }
+			{ id: 20, instruction: divide, input: (x, 5), assign: x, scope: 0 }
+		$
+
+:[Helpers]
