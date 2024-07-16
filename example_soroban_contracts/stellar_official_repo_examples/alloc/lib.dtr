@@ -20,7 +20,7 @@
 			{ id: 19, instruction: end_of_iteration_check, input: (i, ITERATOR_15), assign: CHECK_CONDITION_ASSIGNMENT_16, scope: 0 }
 			{ id: 21, instruction: jump, input: (CHECK_CONDITION_ASSIGNMENT_16, 20), scope: 0 }
 			{ id: 26, instruction: add, input: (sum, i), assign: sum, scope: 20 }
-			{ id: 27, instruction: increment, input: (i), scope: 20 }
+			{ id: 27, instruction: increment, input: (i, ITERATOR_15), scope: 20 }
 			{ id: 28, instruction: goto, input: (19), scope: 20 }
 			{ id: 0, instruction: return, input: (sum), scope: 0 }
 		$

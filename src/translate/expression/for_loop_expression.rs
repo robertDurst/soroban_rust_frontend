@@ -60,6 +60,7 @@ pub fn handle_for_loop_expression(
     instructions.extend(get_increment_value(
         compilation_state.get_global_uuid(),
         iterator_temp_variable.clone(),
+        iterator_variable.clone(),
         body_scope,
     ));
 
@@ -107,11 +108,16 @@ fn get_check_condition(
     )]
 }
 
-fn get_increment_value(id: u128, iterator_variable: String, scope: u128) -> Vec<Instruction> {
+fn get_increment_value(
+    id: u128,
+    iterator_temp_variable: String,
+    iterator_variable: String,
+    scope: u128,
+) -> Vec<Instruction> {
     vec![Instruction::new(
         id,
         "increment".to_string(),
-        vec![iterator_variable],
+        vec![iterator_temp_variable, iterator_variable],
         "".to_string(),
         scope,
     )]
@@ -213,7 +219,7 @@ mod tests {
                 Instruction::new(
                     12,
                     "increment".to_string(),
-                    vec!["x".to_string()],
+                    vec!["x".to_string(), "ITERATOR_0".to_string()],
                     "".to_string(),
                     9
                 ),
@@ -287,7 +293,7 @@ mod tests {
                 Instruction::new(
                     10,
                     "increment".to_string(),
-                    vec!["x".to_string()],
+                    vec!["x".to_string(), "ITERATOR_0".to_string()],
                     "".to_string(),
                     7
                 ),
@@ -424,7 +430,7 @@ mod tests {
                 Instruction::new(
                     23,
                     "increment".to_string(),
-                    vec!["j".to_string()],
+                    vec!["j".to_string(), "ITERATOR_11".to_string()],
                     "".to_string(),
                     20
                 ),
@@ -445,7 +451,7 @@ mod tests {
                 Instruction::new(
                     26,
                     "increment".to_string(),
-                    vec!["i".to_string()],
+                    vec!["i".to_string(), "ITERATOR_0".to_string()],
                     "".to_string(),
                     9
                 ),

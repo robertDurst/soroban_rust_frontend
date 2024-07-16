@@ -12,7 +12,7 @@
 			{ id: 5, instruction: end_of_iteration_check, input: (i, ITERATOR_1), assign: CHECK_CONDITION_ASSIGNMENT_2, scope: 0 }
 			{ id: 7, instruction: jump, input: (CHECK_CONDITION_ASSIGNMENT_2, 6), scope: 0 }
 			{ id: 12, instruction: add, input: (sum, i), assign: sum, scope: 6 }
-			{ id: 13, instruction: increment, input: (i), scope: 6 }
+			{ id: 13, instruction: increment, input: (i, ITERATOR_1), scope: 6 }
 			{ id: 14, instruction: goto, input: (5), scope: 6 }
 			{ id: 0, instruction: return, input: (sum), scope: 0 }
 		$
