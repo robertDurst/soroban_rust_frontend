@@ -106,8 +106,8 @@
 			{ id: 4, instruction: evaluate, input: (METHOD_CALL_EXPRESSION_0.timestamp), assign: ledger_timestamp, scope: 0 }
 			{ id: 8, instruction: assign, input: (time_bound, kind), assign: THING_TO_COMPARE_AGAINST_5, scope: 0 }
 			{ id: 11, instruction: evaluate, input: (equal_to, time_bound.kind, TimeBoundKind::Before), assign: CONDITIONAL_JUMP_CHECK_10, scope: 0 }
-			{ id: 13, instruction: jump, input: (CONDITIONAL_JUMP_CHECK_10, 12), scope: 0 }
 			{ id: 24, instruction: evaluate, input: (equal_to, THING_TO_COMPARE_AGAINST_5, TimeBoundKind::After), assign: CONDITIONAL_JUMP_CHECK_23, scope: 0 }
+			{ id: 13, instruction: jump, input: (CONDITIONAL_JUMP_CHECK_10, 12), scope: 0 }
 			{ id: 26, instruction: jump, input: (CONDITIONAL_JUMP_CHECK_23, 25), scope: 0 }
 			{ id: 21, instruction: evaluate, input: (less_than_or_equal_to, ledger_timestamp, time_bound.timestamp), assign: Thing_to_return, scope: 12 }
 			{ id: 22, instruction: jump, input: (0), scope: 12 }

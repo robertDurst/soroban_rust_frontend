@@ -1,0 +1,26 @@
+[Helpers]:
+-() [match_on_numbers]
+	* Inputs:
+	{
+		x: String
+	}
+	* Output: String
+	* Instructions:
+		$
+			{ id: 3, instruction: evaluate, input: (x.as_str), assign: THING_TO_COMPARE_AGAINST_0, scope: 0 }
+			{ id: 5, instruction: evaluate, input: (equal_to, THING_TO_COMPARE_AGAINST_0, Ok("\"zero\"")), assign: CONDITIONAL_JUMP_CHECK_4, scope: 0 }
+			{ id: 11, instruction: evaluate, input: (equal_to, THING_TO_COMPARE_AGAINST_0, Ok("\"one\"")), assign: CONDITIONAL_JUMP_CHECK_10, scope: 0 }
+			{ id: 17, instruction: evaluate, input: (equal_to, THING_TO_COMPARE_AGAINST_0, _), assign: CONDITIONAL_JUMP_CHECK_16, scope: 0 }
+			{ id: 7, instruction: jump, input: (CONDITIONAL_JUMP_CHECK_4, 6), scope: 0 }
+			{ id: 13, instruction: jump, input: (CONDITIONAL_JUMP_CHECK_10, 12), scope: 0 }
+			{ id: 19, instruction: jump, input: (CONDITIONAL_JUMP_CHECK_16, 18), scope: 0 }
+			{ id: 8, instruction: assign, input: ("zero"), assign: Thing_to_return, scope: 6 }
+			{ id: 9, instruction: jump, input: (0), scope: 6 }
+			{ id: 14, instruction: assign, input: ("one"), assign: Thing_to_return, scope: 12 }
+			{ id: 15, instruction: jump, input: (0), scope: 12 }
+			{ id: 20, instruction: assign, input: ("unknown"), assign: Thing_to_return, scope: 18 }
+			{ id: 21, instruction: jump, input: (0), scope: 18 }
+			{ id: 0, instruction: return, input: (Thing_to_return), scope: 0 }
+		$
+
+:[Helpers]

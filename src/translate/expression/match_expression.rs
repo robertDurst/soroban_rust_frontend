@@ -24,6 +24,7 @@ pub fn handle_match_expression(
 
     let mut match_conditional_evaluation_instructions: Vec<Instruction> = vec![];
     let mut match_body_instructions: Vec<Instruction> = vec![];
+    let mut all_conditions: Vec<Instruction> = vec![];
 
     expr.arms.iter().for_each(|arm| {
         let arm_path: String = handle_pattern(arm.clone().pat.clone()).unwrap();
@@ -32,7 +33,15 @@ pub fn handle_match_expression(
             compilation_state.get_global_uuid()
         );
 
-        match_conditional_evaluation_instructions.push(Instruction::new(
+        compilation_state
+            .clone()
+            .expression_stack
+            .into_iter()
+            .for_each(|instruction| {
+                println!("{:?}", instruction);
+            });
+
+        all_conditions.push(Instruction::new(
             compilation_state.get_global_uuid(),
             format!("evaluate"),
             vec![
@@ -74,6 +83,7 @@ pub fn handle_match_expression(
         ));
     });
 
+    thing_to_compare_against_instructions.extend(all_conditions);
     thing_to_compare_against_instructions.extend(match_conditional_evaluation_instructions);
     thing_to_compare_against_instructions.extend(match_body_instructions);
 
@@ -120,13 +130,6 @@ mod tests {
                     0
                 ),
                 Instruction::new(
-                    5,
-                    "jump".to_string(),
-                    vec!["CONDITIONAL_JUMP_CHECK_2".to_string(), "4".to_string()],
-                    "".to_string(),
-                    0
-                ),
-                Instruction::new(
                     9,
                     "evaluate".to_string(),
                     vec![
@@ -135,6 +138,13 @@ mod tests {
                         "Struct::Variant2".to_string()
                     ],
                     "CONDITIONAL_JUMP_CHECK_8".to_string(),
+                    0
+                ),
+                Instruction::new(
+                    5,
+                    "jump".to_string(),
+                    vec!["CONDITIONAL_JUMP_CHECK_2".to_string(), "4".to_string()],
+                    "".to_string(),
                     0
                 ),
                 Instruction::new(

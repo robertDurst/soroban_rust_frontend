@@ -73,6 +73,7 @@ mod full_contract_tests {
     test_contract!(digicus_unofficial_examples, if_else_let_return_some_or_none);
     test_contract!(digicus_unofficial_examples, simple_sum_in_for_loop);
     test_contract!(digicus_unofficial_examples, return_error);
+    test_contract!(digicus_unofficial_examples, match_on_numbers);
     // Stellar Official Repo Examples
     test_contract!(stellar_official_repo_examples, account);
     test_contract!(stellar_official_repo_examples, alloc);
