@@ -14,3 +14,6 @@ version:
 
 setup:
 	@echo "no setup needed"
+
+release:
+	rm -rf to_dtr && cargo build --release --bin to_dtr --target x86_64-unknown-linux-musl && mv target/x86_64-unknown-linux-musl/release/to_dtr .
